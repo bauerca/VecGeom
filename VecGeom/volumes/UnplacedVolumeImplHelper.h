@@ -98,7 +98,7 @@ public:
     assert(d.IsNormalized() && " direction not normalized in call to  DistanceToOut ");
 #endif
     Precision output = kInfLength;
-    Implementation::template DistanceToOut(((UnplacedVolume_t *)this)->UnplacedVolume_t::GetStruct(), p, d, step_max,
+    Implementation::template DistanceToOut<Precision>(((UnplacedVolume_t *)this)->UnplacedVolume_t::GetStruct(), p, d, step_max,
                                            output);
 
 //#ifdef VECGEOM_DISTANCE_DEBUG

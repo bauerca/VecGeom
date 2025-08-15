@@ -51,7 +51,7 @@ struct IndirectImplementation {
   VECCORE_ATT_HOST_DEVICE
   static void Contains(UnplacedStruct_t const &s, Vector3D<Real_v> const &point, Bool_v &inside)
   {
-    DispatchingImplementation::template Contains(s, point, inside);
+    DispatchingImplementation::template Contains<Real_v, Bool_v>(s, point, inside);
   }
 
   template <typename Real_v, typename Inside_t>
@@ -59,7 +59,7 @@ struct IndirectImplementation {
   VECCORE_ATT_HOST_DEVICE
   static void Inside(UnplacedStruct_t const &s, Vector3D<Real_v> const &point, Inside_t &inside)
   {
-    DispatchingImplementation::template Inside(s, point, inside);
+    DispatchingImplementation::template Inside<Real_v, Inside_t>(s, point, inside);
   }
 
   template <typename Real_v>
@@ -68,7 +68,7 @@ struct IndirectImplementation {
   static void DistanceToIn(UnplacedStruct_t const &s, Vector3D<Real_v> const &point, Vector3D<Real_v> const &direction,
                            Real_v const &stepMax, Real_v &distance)
   {
-    DispatchingImplementation::template DistanceToIn(s, point, direction, stepMax, distance);
+    DispatchingImplementation::template DistanceToIn<Real_v>(s, point, direction, stepMax, distance);
   }
 
   template <typename Real_v>
@@ -77,7 +77,7 @@ struct IndirectImplementation {
   static void DistanceToOut(UnplacedStruct_t const &s, Vector3D<Real_v> const &point, Vector3D<Real_v> const &direction,
                             Real_v const &stepMax, Real_v &distance)
   {
-    DispatchingImplementation::template DistanceToOut(s, point, direction, stepMax, distance);
+    DispatchingImplementation::template DistanceToOut<Real_v>(s, point, direction, stepMax, distance);
   }
 
   template <typename Real_v>
@@ -85,7 +85,7 @@ struct IndirectImplementation {
   VECCORE_ATT_HOST_DEVICE
   static void SafetyToIn(UnplacedStruct_t const &s, Vector3D<Real_v> const &point, Real_v &safety)
   {
-    DispatchingImplementation::template SafetyToIn(s, point, safety);
+    DispatchingImplementation::template SafetyToIn<Real_v>(s, point, safety);
   }
 
   template <typename Real_v>
@@ -93,7 +93,7 @@ struct IndirectImplementation {
   VECCORE_ATT_HOST_DEVICE
   static void SafetyToOut(UnplacedStruct_t const &s, Vector3D<Real_v> const &point, Real_v &safety)
   {
-    DispatchingImplementation::template SafetyToOut(s, point, safety);
+    DispatchingImplementation::template SafetyToOut<Real_v>(s, point, safety);
   }
 
   template <typename Real_v>
@@ -102,7 +102,7 @@ struct IndirectImplementation {
   static Vector3D<Real_v> NormalKernel(UnplacedStruct_t const &s, Vector3D<Real_v> const &point,
                                        typename vecCore::Mask_v<Real_v> &valid)
   {
-    DispatchingImplementation::template NormalKernel(s, point, valid);
+    DispatchingImplementation::template NormalKernel<Real_v>(s, point, valid);
   }
 };
 

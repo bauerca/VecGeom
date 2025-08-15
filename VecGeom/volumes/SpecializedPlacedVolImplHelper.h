@@ -152,7 +152,7 @@ public:
 #endif
     Transformation3D const *tr = this->GetTransformation();
     Precision output(-1.);
-    Specialization::template DistanceToOut(*this->GetUnplacedStruct(), tr->Transform<transC, rotC>(point),
+    Specialization::template DistanceToOut<Precision>(*this->GetUnplacedStruct(), tr->Transform<transC, rotC>(point),
                                            tr->TransformDirection<rotC>(direction), stepMax, output);
 
 #ifdef VECGEOM_DISTANCE_DEBUG
